@@ -20,7 +20,7 @@ class CharactersApi {
       List<dynamic> charactersList = response.data['results'];
       print(charactersList.toString());
 
-      return response.data;
+      return charactersList;
     } catch (e) {
       print('error ${e.toString()}');
       return [];

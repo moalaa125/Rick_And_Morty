@@ -1,4 +1,4 @@
-class Characters {
+class Character {
   late int id;
   late String name;
   late String status;
@@ -7,7 +7,7 @@ class Characters {
   late String image;
   late List<dynamic> appearnceOfSeasons;
 
-  Characters({
+  Character({
     required this.id,
     required this.name,
     required this.status,
@@ -17,7 +17,7 @@ class Characters {
     required this.appearnceOfSeasons,
   });
 
-  Characters.fromJson(Map<String, dynamic> json) {
+  Character.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
     status = json['status'];
