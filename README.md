@@ -16,15 +16,6 @@ A Flutter app for browsing characters from the Rick and Morty universe, built wi
 - ✨ Animated text effects for character names and details
 - 📴 Offline support — local caching so the app keeps working without an internet connection
 
-## 📱 Screenshots
-
-| Characters Grid | Character Details |
-|---|---|
-| <!-- add screenshot here --> | <!-- add screenshot here --> |
-
-> Add your screenshots to a `screenshots/` folder in the repo and reference them like:
-> `![Characters Grid](screenshots/grid.png)`
-
 ## 🛠️ Tech Stack
 
 - **Flutter** & **Dart**
