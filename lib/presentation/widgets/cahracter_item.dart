@@ -35,8 +35,23 @@ class CahracterItem extends StatelessWidget {
         child: Container(
           color: myGrey,
           child: character.image.isNotEmpty
-              ? Image.network(character.image, fit: BoxFit.cover  )
-              : CircularProgressIndicator(color: Colors.amberAccent,),
+              ? Image.network(
+                  character.image,
+                  fit: BoxFit.cover,
+                  loadingBuilder: (context, child, loadingProgress) {
+                    if (loadingProgress == null) {
+                      return child;
+                    }
+                    return CircularProgressIndicator(
+                      color: Colors.amberAccent,
+                      padding: EdgeInsets.symmetric(vertical: 100 , horizontal: 50),
+                    );
+                  },
+                  errorBuilder: (context, error, stackTrace) {
+                    return const Icon(Icons.error, color: Colors.red);
+                  },
+                )
+              : null,
         ),
       ),
     );
