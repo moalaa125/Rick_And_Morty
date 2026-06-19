@@ -31,7 +31,7 @@ class _MyWidgetState extends State<CharactersScreen> {
           allCharacters = (state).character;
           return buildLoadedListWidget();
         } else {
-          return CircularProgressIndicator();
+          return Center(child: CircularProgressIndicator(color: Colors.amber,));
         }
       },
     );
@@ -79,7 +79,7 @@ class _MyWidgetState extends State<CharactersScreen> {
         ),
         centerTitle: true,
       ),
-      body:  buldBlocWidget(),
+      body: buldBlocWidget(),
     );
   }
 }

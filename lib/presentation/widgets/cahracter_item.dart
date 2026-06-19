@@ -36,7 +36,7 @@ class CahracterItem extends StatelessWidget {
           color: myGrey,
           child: character.image.isNotEmpty
               ? Image.network(character.image, fit: BoxFit.cover  )
-              : CircularProgressIndicator(),
+              : CircularProgressIndicator(color: Colors.amberAccent,),
         ),
       ),
     );
