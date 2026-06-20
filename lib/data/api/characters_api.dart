@@ -18,11 +18,11 @@ class CharactersApi {
     try {
       Response response = await dio.get('character');
       List<dynamic> charactersList = response.data['results'];
-      print(charactersList.toString());
 
       return charactersList;
     } catch (e) {
-      print('error ${e.toString()}');
+      ('error ${e.toString()}');
+
       return [];
     }
   }

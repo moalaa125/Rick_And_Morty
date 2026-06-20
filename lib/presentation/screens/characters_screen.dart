@@ -130,27 +130,28 @@ class _MyWidgetState extends State<CharactersScreen> {
   }
 
   Widget _buildNoResultsWidget(BuildContext context) {
-  final double availableHeight = MediaQuery.of(context).size.height -
-      kToolbarHeight -
-      MediaQuery.of(context).padding.top;
+    final double availableHeight =
+        MediaQuery.of(context).size.height -
+        kToolbarHeight -
+        MediaQuery.of(context).padding.top;
 
-  return SizedBox(
-    height: availableHeight,
-    child: Center(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(Icons.search_off, size: 60, color: Colors.black38),
-          const SizedBox(height: 12),
-          Text(
-            'No characters found',
-            style: TextStyle(fontSize: 18, color: Colors.black54),
-          ),
-        ],
+    return SizedBox(
+      height: availableHeight,
+      child: Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            Icon(Icons.search_off, size: 60, color: Colors.black38),
+            const SizedBox(height: 12),
+            Text(
+              'No characters found',
+              style: TextStyle(fontSize: 18, color: Colors.black54),
+            ),
+          ],
+        ),
       ),
-    ),
-  );
-}
+    );
+  }
 
   Widget buildChacactersList() {
     return GridView.builder(
@@ -162,7 +163,7 @@ class _MyWidgetState extends State<CharactersScreen> {
       padding: EdgeInsets.zero,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-        childAspectRatio: 2 / 3,
+        childAspectRatio: 2 / 2.5,
         crossAxisSpacing: 1,
         mainAxisSpacing: 1,
       ),
