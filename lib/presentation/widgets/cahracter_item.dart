@@ -44,7 +44,10 @@ class CahracterItem extends StatelessWidget {
                     }
                     return CircularProgressIndicator(
                       color: Colors.amberAccent,
-                      padding: EdgeInsets.symmetric(vertical: 100 , horizontal: 50),
+                      padding: EdgeInsets.symmetric(
+                        vertical: 100,
+                        horizontal: 50,
+                      ),
                     );
                   },
                   errorBuilder: (context, error, stackTrace) {
