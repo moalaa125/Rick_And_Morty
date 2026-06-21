@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_offline/flutter_offline.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rickandmorty/business_logic/cubit/characters_cubit.dart';
@@ -91,6 +92,19 @@ class _MyWidgetState extends State<CharactersScreen> {
     });
   }
 
+  Widget _buildNoInternet() {
+    return Container(
+      color: myWhite,
+      child: Column(
+        children: [
+          Image.asset('assets/images/error.png'),
+          SizedBox(height: 10.h),
+          Text('No internet Connection Pleas Check and try again !'),
+        ],
+      ),
+    );
+  }
+
   @override
   void initState() {
     super.initState();
@@ -107,7 +121,7 @@ class _MyWidgetState extends State<CharactersScreen> {
           return Center(
             child: LoadingAnimationWidget.fourRotatingDots(
               size: 50,
-              color: const Color.fromARGB(255, 255, 230, 0),
+              color: myYellow,
             ),
           );
         }
@@ -199,7 +213,31 @@ class _MyWidgetState extends State<CharactersScreen> {
         title: _isSearching ? _buildSearchField() : _buildAppBarTitle(),
         actions: _buildAppBarActions(),
       ),
-      body: buldBlocWidget(),
+      body: OfflineBuilder(
+        connectivityBuilder:
+            (
+              BuildContext context,
+              List<ConnectivityResult> connectivity,
+              Widget child,
+            ) {
+              final bool connected = !connectivity.contains(
+                ConnectivityResult.none,
+              );
+
+              if (connected) {
+                return buldBlocWidget();
+              } else {
+                return _buildNoInternet();
+              }
+            },
+        child: Center(
+          child: LoadingAnimationWidget.fourRotatingDots(
+            size: 50,
+            color: myYellow,
+          ),
+        ),
+        // ,
+      ),
     );
   }
 }
