@@ -18,7 +18,8 @@ class CharactersDetails extends StatelessWidget {
         title: Text(character.name, style: TextStyle(color: myWhite)),
         background: Hero(
           tag: character.id,
-          child: Image.network(character.image, fit: BoxFit.cover)),
+          child: Image.network(character.image, fit: BoxFit.fill),
+        ),
       ),
     );
   }
