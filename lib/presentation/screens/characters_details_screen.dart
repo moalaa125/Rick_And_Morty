@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rickandmorty/constants/my_colors.dart';
 import 'package:rickandmorty/data/models/character.dart';
 
@@ -9,13 +10,13 @@ class CharactersDetails extends StatelessWidget {
 
   Widget _buildSliverAppBar() {
     return SliverAppBar(
-      expandedHeight: 750,
+      expandedHeight: 600.h,
       pinned: true,
       stretch: true,
       backgroundColor: myGrey,
       flexibleSpace: FlexibleSpaceBar(
         centerTitle: true,
-        title: Text(character.name, style: TextStyle(color: myWhite)),
+        title: Text(character.name, style: TextStyle(color: myWhite, fontSize: 20.sp)),
         background: Hero(
           tag: character.id,
           child: Image.network(character.image, fit: BoxFit.fill),
@@ -35,24 +36,24 @@ class CharactersDetails extends StatelessWidget {
             style: TextStyle(
               color: myWhite,
               fontWeight: FontWeight.bold,
-              fontSize: 18,
+              fontSize: 18.sp,
             ),
           ),
           TextSpan(
             text: value,
-            style: TextStyle(color: myWhite, fontSize: 16),
+            style: TextStyle(color: myWhite, fontSize: 16.sp),
           ),
         ],
       ),
     );
   }
 
-  Widget _buildDevider({required double endIdet}) {
+  Widget _buildDevider({required double endIndent}) {
     return Divider(
       color: myYellow,
-      height: 30,
-      endIndent: endIdet,
-      thickness: 3,
+      height: 30.h,
+      endIndent: endIndent.w,
+      thickness: 3.h,
     );
   }
 
@@ -63,35 +64,34 @@ class CharactersDetails extends StatelessWidget {
       body: CustomScrollView(
         slivers: [
           _buildSliverAppBar(),
-
           SliverList(
             delegate: SliverChildListDelegate([
               Container(
-                margin: EdgeInsets.fromLTRB(14, 14, 14, 0),
-                padding: EdgeInsets.all(8),
+                margin: EdgeInsets.fromLTRB(14.w, 14.h, 14.w, 0),
+                padding: EdgeInsets.all(8.r),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     _characterInfo(title: 'Status: ', value: character.status),
-                    _buildDevider(endIdet: 315),
-                    SizedBox(height: 15),
+                    _buildDevider(endIndent: 260),
+                    SizedBox(height: 15.h),
 
                     _characterInfo(
-                      title: 'species: ',
+                      title: 'Species: ',
                       value: character.species,
                     ),
 
-                    _buildDevider(endIdet: 300),
-                    SizedBox(height: 15),
+                    _buildDevider(endIndent: 250),
+                    SizedBox(height: 15.h),
 
                     _characterInfo(title: 'Gender: ', value: character.gender),
-                    _buildDevider(endIdet: 305),
-                    SizedBox(height: 20),
+                    _buildDevider(endIndent: 260),
+                    SizedBox(height: 20.h),
                   ],
                 ),
               ),
-              SizedBox(height: 700),
+              SizedBox(height: 700.h),
             ]),
           ),
         ],

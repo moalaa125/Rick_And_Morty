@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rickandmorty/constants/my_colors.dart';
 import 'package:rickandmorty/constants/strings.dart';
 import 'package:rickandmorty/data/models/character.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class CahracterItem extends StatelessWidget {
   const CahracterItem({super.key, required this.character});
@@ -12,24 +14,31 @@ class CahracterItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      margin: EdgeInsetsDirectional.fromSTEB(8, 8, 8, 8),
-      padding: EdgeInsets.all(4),
+      margin: EdgeInsetsDirectional.fromSTEB(8.w, 8.h, 8.w, 8.h),
+      padding: EdgeInsets.all(4.r),
       decoration: BoxDecoration(
         color: myWhite,
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(8.r),
       ),
-
       child: InkWell(
-        onTap: () => Navigator.pushNamed(context, charactersDetailsScreen , arguments: character),
+        onTap: () => Navigator.pushNamed(
+          context,
+          charactersDetailsScreen,
+          arguments: character,
+        ),
         child: GridTile(
           footer: Container(
             width: double.infinity,
-            padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+            padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 10.h),
             color: Colors.black54,
             alignment: Alignment.bottomCenter,
             child: Text(
-               character.name,
-              style: TextStyle(color: myWhite, fontWeight: FontWeight.bold),
+              character.name,
+              style: TextStyle(
+                color: myWhite,
+                fontWeight: FontWeight.bold,
+                fontSize: 14.sp,
+              ),
               overflow: TextOverflow.ellipsis,
               maxLines: 2,
               textAlign: TextAlign.center,
@@ -47,16 +56,14 @@ class CahracterItem extends StatelessWidget {
                         if (loadingProgress == null) {
                           return child;
                         }
-                        return CircularProgressIndicator(
+                        return LoadingAnimationWidget.threeRotatingDots(
+                          size: 50,
                           color: Colors.amberAccent,
-                          padding: EdgeInsets.symmetric(
-                            vertical: 100,
-                            horizontal: 50,
-                          ),
+                         
                         );
                       },
                       errorBuilder: (context, error, stackTrace) {
-                        return const Icon(Icons.error, color: Colors.red);
+                        return Icon(Icons.error, color: Colors.red, size: 24.r);
                       },
                     )
                   : null,

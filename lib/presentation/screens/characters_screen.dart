@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rickandmorty/business_logic/cubit/characters_cubit.dart';
 import 'package:rickandmorty/constants/my_colors.dart';
 import 'package:rickandmorty/data/models/character.dart';
 import 'package:rickandmorty/presentation/widgets/cahracter_item.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class CharactersScreen extends StatefulWidget {
   const CharactersScreen({super.key});
@@ -25,10 +27,9 @@ class _MyWidgetState extends State<CharactersScreen> {
       decoration: InputDecoration(
         hintText: 'Find a Character.....',
         border: InputBorder.none,
-        hintStyle: TextStyle(color: myGrey, fontSize: 18),
+        hintStyle: TextStyle(color: myGrey, fontSize: 18.sp),
       ),
-
-      style: TextStyle(color: Colors.black, fontSize: 18),
+      style: TextStyle(color: Colors.black, fontSize: 18.sp),
       onChanged: (searchedCharacter) {
         addSearchedForItemsToSearcedList(searchedCharacter);
       },
@@ -38,7 +39,7 @@ class _MyWidgetState extends State<CharactersScreen> {
   void addSearchedForItemsToSearcedList(String searchedCharacters) {
     searchForCharacters = allCharacters
         .where(
-          (Character) => Character.name.toLowerCase().startsWith(
+          (character) => character.name.toLowerCase().startsWith(
             searchedCharacters.toLowerCase(),
           ),
         )
@@ -50,20 +51,19 @@ class _MyWidgetState extends State<CharactersScreen> {
   List<Widget> _buildAppBarActions() {
     if (_isSearching) {
       return [
-        // h3mlha lsa
         IconButton(
           onPressed: () {
             _clearSearch();
             Navigator.pop(context);
           },
-          icon: Icon(Icons.clear, color: Colors.black),
+          icon: Icon(Icons.clear, color: Colors.black, size: 24.r),
         ),
       ];
     } else {
       return [
         IconButton(
           onPressed: _startSearch,
-          icon: Icon(Icons.search, color: Colors.black),
+          icon: Icon(Icons.search, color: Colors.black, size: 24.r),
         ),
       ];
     }
@@ -80,7 +80,6 @@ class _MyWidgetState extends State<CharactersScreen> {
 
   void _stopSearching() {
     _clearSearch();
-
     setState(() {
       _isSearching = false;
     });
@@ -95,7 +94,6 @@ class _MyWidgetState extends State<CharactersScreen> {
   @override
   void initState() {
     super.initState();
-
     BlocProvider.of<CharactersCubit>(context).getAllCharacters();
   }
 
@@ -103,10 +101,15 @@ class _MyWidgetState extends State<CharactersScreen> {
     return BlocBuilder<CharactersCubit, CharactersState>(
       builder: (context, state) {
         if (state is CharachterLoaded) {
-          allCharacters = (state).character;
+          allCharacters = state.character;
           return buildLoadedListWidget();
         } else {
-          return Center(child: CircularProgressIndicator(color: Colors.amber));
+          return Center(
+            child: LoadingAnimationWidget.fourRotatingDots(
+              size: 50,
+              color: myYellow,
+            ),
+          );
         }
       },
     );
@@ -141,11 +144,11 @@ class _MyWidgetState extends State<CharactersScreen> {
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
-            Icon(Icons.search_off, size: 60, color: Colors.black38),
-            const SizedBox(height: 12),
+            Icon(Icons.search_off, size: 60.r, color: Colors.black38),
+            SizedBox(height: 12.h),
             Text(
               'No characters found',
-              style: TextStyle(fontSize: 18, color: Colors.black54),
+              style: TextStyle(fontSize: 18.sp, color: Colors.black54),
             ),
           ],
         ),
@@ -164,8 +167,8 @@ class _MyWidgetState extends State<CharactersScreen> {
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         childAspectRatio: 2 / 2.5,
-        crossAxisSpacing: 1,
-        mainAxisSpacing: 1,
+        crossAxisSpacing: 1.w,
+        mainAxisSpacing: 1.h,
       ),
       itemBuilder: (context, index) {
         return CahracterItem(
@@ -182,7 +185,7 @@ class _MyWidgetState extends State<CharactersScreen> {
       'Characters',
       style: TextStyle(
         color: Colors.black,
-        fontSize: 25,
+        fontSize: 25.sp,
         fontWeight: FontWeight.w500,
       ),
     );
