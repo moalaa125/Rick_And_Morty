@@ -18,8 +18,7 @@ class CharactersDetails extends StatelessWidget {
         title: Text(character.name, style: TextStyle(color: myWhite)),
         background: Hero(
           tag: character.id,
-          child: Image.network(character.image, fit: BoxFit.cover),
-        ),
+          child: Image.network(character.image, fit: BoxFit.cover)),
       ),
     );
   }
@@ -87,15 +86,12 @@ class CharactersDetails extends StatelessWidget {
 
                     _characterInfo(title: 'Gender: ', value: character.gender),
                     _buildDevider(endIdet: 305),
-                    SizedBox(height: 20,)
+                    SizedBox(height: 20),
                   ],
-                  
                 ),
               ),
-                                  SizedBox(height: 700,)
-
-            ]
-            ),
+              SizedBox(height: 700),
+            ]),
           ),
         ],
       ),
