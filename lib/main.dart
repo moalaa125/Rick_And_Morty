@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:rickandmorty/app_router.dart';
+import 'app_router.dart';
 
 void main() {
   runApp(RickAndMorty());

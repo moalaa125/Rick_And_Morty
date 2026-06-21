@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:rickandmorty/constants/my_colors.dart';
-import 'package:rickandmorty/data/models/character.dart';
+import '../../constants/my_colors.dart';
+import '../../data/models/character.dart';
 
 class CharactersDetails extends StatelessWidget {
   const CharactersDetails({super.key, required this.character});

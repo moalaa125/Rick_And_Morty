@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:rickandmorty/constants/my_colors.dart';
-import 'package:rickandmorty/constants/strings.dart';
-import 'package:rickandmorty/data/models/character.dart';
+import '../../constants/my_colors.dart';
+import '../../constants/strings.dart';
+import '../../data/models/character.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class CahracterItem extends StatelessWidget {
