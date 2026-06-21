@@ -107,7 +107,7 @@ class _MyWidgetState extends State<CharactersScreen> {
           return Center(
             child: LoadingAnimationWidget.fourRotatingDots(
               size: 50,
-              color: myYellow,
+              color: const Color.fromARGB(255, 255, 230, 0),
             ),
           );
         }
