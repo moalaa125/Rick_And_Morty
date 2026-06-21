@@ -22,9 +22,9 @@ A Flutter app for browsing characters from the Rick and Morty universe, built wi
 
 ## 📱 Screenshots
 
-| Home Screen | Search Activated | No Internet |
-|---|---|---|
-| ![Home Screen](screenshots/home_screen.PNG) | ![Search](screenshots/app_bar_change.PNG) | ![No Internet](screenshots/no_internet.PNG) |
+| Home Screen | Search Activated | Character Details | Scrolled Details |
+|---|---|---|---|
+| ![Home Screen](screenshots/home_screen.PNG) | ![Search](screenshots/app_bar_change.PNG) | ![Character Details](screenshots/details_screen.PNG) | ![Scrolled Details](screenshots/scrolled_details_screen.PNG) |
 
 ### 🔍 Search in Action
 
@@ -34,6 +34,10 @@ A Flutter app for browsing characters from the Rick and Morty universe, built wi
   <img src="screenshots/search3.PNG" width="200" />
   <img src="screenshots/search4.PNG" width="200" />
 </p>
+
+### 📴 No Internet
+
+![No Internet](screenshots/no_internet.PNG)
 
 ## 🛠️ Tech Stack
 
