@@ -93,19 +93,22 @@ class _MyWidgetState extends State<CharactersScreen> {
   }
 
   Widget _buildNoInternet() {
-    return Center(
-      child: Container(
-        color: myWhite,
-        child: Column(
-          children: [
-            Image.asset('assets/images/error.png'),
-            SizedBox(height: 10.h),
-            Text(
-              'No internet Connection Pleas Check and try again !',
-              style: TextStyle(fontSize: 30, fontWeight: FontWeight.w400),
+    return Container(
+      color: myWhite,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Image.asset('assets/images/error.png'),
+          SizedBox(height: 20.h),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              'No internet Connection Pleas Check your internet and try again !',
+              style: TextStyle(fontSize: 25.sp, fontWeight: FontWeight.bold),
+              textAlign: TextAlign.center,
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
